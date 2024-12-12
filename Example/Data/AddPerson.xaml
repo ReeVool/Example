@@ -12,32 +12,44 @@
         >
 
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="5"/>
-        </Style>
+        <ResourceDictionary Source="/Styles.xaml"/>
     </Window.Resources>
 
     <Grid>
         <Label Content="Введите ФИО" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="10,35,0,0" x:Name="nameBox"
                  TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        
+
         <Label Content="Возраст" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="10,90,0,0" x:Name="ageBox"
-                 TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        
-        <Label Content="Адрес" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="10,130,0,0" x:Name="adresBox"
+        <TextBox HorizontalAlignment="Left" Margin="11,84,0,0" x:Name="ageBox"
                  TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
 
+        <Label Content="Адрес" HorizontalAlignment="Left" Margin="11,108,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="11,0,0,0" x:Name="adresBox"
+                 TextWrapping="Wrap" VerticalAlignment="Center" Width="150"/>
+
         <CheckBox Content="Трудоустроен(-а)" HorizontalAlignment="Left" x:Name="workBox"
-                  Margin="10,165,0,0" VerticalAlignment="Top"/>
+                  Margin="11,162,0,0" VerticalAlignment="Top"/>
 
         <Button Content="Добавить"
                 x:Name="AddPersonButton"
                 VerticalAlignment="Bottom"
-                HorizontalAlignment="Right" Click="AddPersonButton_Click"
-                    />
+                HorizontalAlignment="Right"
+                Click="AddPersonButton_Click"
+                >
+            <Button.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Padding" Value="5"/>
+
+                    <Style.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </Button.Resources>
+            
+        </Button>
     </Grid>
 </Window>

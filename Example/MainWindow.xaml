@@ -11,38 +11,92 @@
         >
 
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Padding" Value="5"/>
-        </Style>
+        <ResourceDictionary Source="/Styles.xaml"/>
     </Window.Resources>
+
+    <!--===================================================================================-->
     
     <Grid>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
             <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal"
+                    >
+
+            <Grid>
+                <TextBlock Text="Выберите тип данных"
+                           Margin="10 -10"
+                           />
+                
+                <ComboBox x:Name="searchTypeBox"
+                          Width="200"
+                          >
+
+                    <ComboBoxItem Content=""/>
+                    <ComboBoxItem Content="id" x:Name="comboId"/>
+                    <ComboBoxItem Content="ФИО" x:Name="comboName"/>
+                    <ComboBoxItem Content="Возраст" x:Name="comboAge"/>
+                    <ComboBoxItem Content="Адрес" x:Name="comboAdres"/>
+                    <ComboBoxItem Content="Трудоутсройство" x:Name="comboWork"/>
+                </ComboBox>
+            </Grid>
+
+            <Grid>
+                <TextBlock Text="Введите данные для поиска"
+                           Margin="10 -10"
+                           />
+                <TextBox x:Name="searchBox"
+                         Width="300"
+                         />
+            </Grid>
+
+            <Button Content="Поиск"
+                    x:Name="searchBut" Click="searchBut_Click"
+                    />
+
+            <Button Content="Отмена"
+                    x:Name="reCon" Click="reCon_Click"
+                    />
+
+        </StackPanel>
+
         <DataGrid x:Name="dataGrid"
                   ItemsSource="{Binding}"
-                  IsReadOnly="True"
+                  AutoGenerateColumns="False"
+                  Grid.Row="1"
                   >
-            
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding id}" Width="50" Header="Id" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding ФИО}" Width="3*" Header="ФИО"/>
+                <DataGridTextColumn Binding="{Binding Возраст}" Width="*" Header="Возраст"/>
+                <DataGridTextColumn Binding="{Binding Адрес}" Width="3*" Header="Адрес"/>
+                <DataGridCheckBoxColumn Binding="{Binding Трудоустроен}" Width="1.1*" Header="Трудоустроен(-а)"/>
+            </DataGrid.Columns>
         </DataGrid>
 
 
-        <StackPanel Grid.Row="1"
+        <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     >
+
             <Button Content="Добавить"
                     x:Name="Add" Click="Add_Click"
                     />
 
             <Button Content="Обновить"
                 x:Name="Reload" Click="Reload_Click"
+                    />
+
+            <Button Content="Изменить"
+                x:Name="Change" Click="Change_Click"
                     />
 
             <Button Content="Удалить"
